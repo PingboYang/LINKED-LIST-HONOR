@@ -57,7 +57,30 @@ void LList<T> :: insertItem(T item)
 template <class T>      
 void LList<T> :: deleteItem(T item)
 {
-   
+   node<T> *p=new node<T>;
+  node<T> *r=new node<T>;
+   p=first;
+   r=first;
+   if(p==NULL)
+      cout<<"\nThe list is empty"<<endl;
+  else if( p->info==item){
+    first=p->next;
+    delete p;
+    length--;
+  }
+  else{
+    while(p!=NULL && p->info!=item){
+      r=p;
+      p=p->next;
+    }
+    if(p==NULL){
+      cout<<"item is not found.";
+    }
+    r->next=p->next;
+    delete p;
+    length --;
+  }
+  
 }
 
 template <class T>
